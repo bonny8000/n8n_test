@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pre-Test Entry</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background-color: #f9fafb;
+      color: #111827;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      text-align: center;
+      padding: 20px;
+    }
+
+    h1 {
+      font-size: 2rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    p {
+      font-size: 1rem;
+      color: #6b7280;
+      margin-bottom: 2rem;
+      max-width: 400px;
+    }
+
+    #user-id {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: #10b981;
+      margin: 1.5rem 0;
+    }
+
+    button {
+      padding: 0.75rem 1.5rem;
+      font-size: 1rem;
+      border: none;
+      border-radius: 0.5rem;
+      cursor: pointer;
+      margin: 0.5rem;
+      transition: background-color 0.2s ease;
+    }
+
+    .btn-generate {
+      background-color: #3b82f6;
+      color: white;
+    }
+
+    .btn-generate:hover {
+      background-color: #2563eb;
+    }
+
+    .btn-start {
+      background-color: #10b981;
+      color: white;
+    }
+
+    .btn-start:hover {
+      background-color: #059669;
+    }
+
+    #start-form {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <h1>Welcome to the Pre-Test</h1>
+  <p>Click below to generate your unique User ID. You will use this ID throughout the test.</p>
+
+  <button class="btn-generate" onclick="generateUserId()">Generate User ID</button>
+  <div id="user-id"></div>
+
+  <form id="start-form" action="http://localhost:5678/webhook-test/your-webhook-id" method="GET">
+    <input type="hidden" name="user_id" id="user_id_input">
+    <button class="btn-start" type="submit">Start Test</button>
+  </form>
+
+  <script>
+    function generateUserId() {
+      const randomId = Math.floor(1000 + Math.random() * 9000);
+      const userId = "User_" + randomId;
+      document.getElementById("user-id").innerText = "Your ID: " + userId;
+      document.getElementById("user_id_input").value = userId;
+      document.getElementById("start-form").style.display = "block";
+    }
+  </script>
+</body>
+</html>
