@@ -75,11 +75,16 @@
   let userId = "";
 
   function generateUserId() {
-    const randomId = Math.floor(1000 + Math.random() * 9000);
-    userId = "User_" + randomId;
-
+    const lastUsedId = localStorage.getItem("lastUsedUserId") || 1000;
+    let newId = parseInt(lastUsedId) + 1;
+    localStorage.setItem("lastUsedUserId", newId);
+    
+    const userId = "User_" + newId;
     document.getElementById("user-id").innerText = "Your ID: " + userId;
-    document.getElementById("start-btn").style.display = "inline-block";  // 顯示按鈕
+    document.getElementById("start-btn").style.display = "inline-block";
+
+    // Save to sessionStorage for later redirect
+    sessionStorage.setItem("userId", userId);
   }
 
   function goToForm() {
