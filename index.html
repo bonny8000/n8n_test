@@ -85,18 +85,17 @@
   </form>
 
   <script>
-    function generateUserId() {
-      const randomId = "User_" + Math.floor(1000 + Math.random() * 9000);
-      document.getElementById("user-id").innerText = "Your ID: " + randomId;
-
-      const formUrlBase = "https://docs.google.com/forms/d/e/1FAIpQLSc.../viewform?usp=pp_url&entry.711240152=";
-      const fullFormUrl = formUrlBase + encodeURIComponent(randomId);
-
-      const startForm = document.getElementById("start-form");
-      startForm.action = fullFormUrl;
-      startForm.style.display = "block";
-    }
-  </script>
+  function generateUserId() {
+    const randomId = "User_" + Math.floor(1000 + Math.random() * 9000);
+    const googleFormBase = "https://docs.google.com/forms/d/e/1FAIpQLScB7GyII7_I9dPZ-zufbLrpDtW29OrMM9Lolgp96XVFuU3Fmw/viewform?usp=pp_url";
+    const fullLink = `${googleFormBase}&entry.711240152=${randomId}`;
+    
+    document.getElementById("user-id").innerText = "Your ID: " + randomId;
+    document.getElementById("user_id_input").value = randomId;
+    document.getElementById("start-form").action = fullLink;
+    document.getElementById("start-form").style.display = "block";
+  }
+</script>
 </body>
 </html>
 
