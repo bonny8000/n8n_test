@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Pre-Test Entry</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
   <style>
@@ -80,19 +80,23 @@
   <button class="btn-generate" onclick="generateUserId()">Generate User ID</button>
   <div id="user-id"></div>
 
-  <form id="start-form" action="http://localhost:5678/webhook-test/your-webhook-id" method="GET">
-    <input type="hidden" name="user_id" id="user_id_input">
+  <form id="start-form" target="_blank">
     <button class="btn-start" type="submit">Start Test</button>
   </form>
 
   <script>
     function generateUserId() {
-      const randomId = Math.floor(1000 + Math.random() * 9000);
-      const userId = "User_" + randomId;
-      document.getElementById("user-id").innerText = "Your ID: " + userId;
-      document.getElementById("user_id_input").value = userId;
-      document.getElementById("start-form").style.display = "block";
+      const randomId = "User_" + Math.floor(1000 + Math.random() * 9000);
+      document.getElementById("user-id").innerText = "Your ID: " + randomId;
+
+      const formUrlBase = "https://docs.google.com/forms/d/e/1FAIpQLSc.../viewform?usp=pp_url&entry.711240152=";
+      const fullFormUrl = formUrlBase + encodeURIComponent(randomId);
+
+      const startForm = document.getElementById("start-form");
+      startForm.action = fullFormUrl;
+      startForm.style.display = "block";
     }
   </script>
 </body>
 </html>
+
