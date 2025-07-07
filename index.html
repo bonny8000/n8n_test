@@ -72,20 +72,22 @@
   <button class="btn-start" onclick="goToForm()">Start Test</button>
 
   <script>
-    let generatedUserId = "";
+  let userId = "";
 
-    function generateUserId() {
-      const randomId = "User_" + Math.floor(1000 + Math.random() * 9000);
-      generatedUserId = randomId;
-      document.getElementById("user-id").innerText = "Your ID: " + randomId;
-      document.querySelector(".btn-start").style.display = "inline-block";
-    }
+  function generateUserId() {
+    const randomId = Math.floor(1000 + Math.random() * 9000);
+    userId = "User_" + randomId;
 
-    function goToForm() {
-      const baseUrl = "https://docs.google.com/forms/d/e/1FAIpQLScB7GyII7_I9dPZ-zufbLrpDtW29OrMM9Lolgp96XVFuU3Fmw/viewform?usp=pp_url";
-      const formLink = `${baseUrl}&entry.711240152=${generatedUserId}`;
-      window.location.href = formLink;
-    }
+    document.getElementById("user-id").innerText = "Your ID: " + userId;
+    document.getElementById("start-form").style.display = "block";
+  }
+
+  function goToForm() {
+    const baseFormUrl = "https://docs.google.com/forms/d/e/1FAIpQLScB7GyII7_I9dPZ-zufbLrpDtW29OrMM9Lolgp96XVFuU3Fmw/viewform?usp=pp_url";
+    const filledUrl = `${baseFormUrl}&entry.711240152=${encodeURIComponent(userId)}`;
+    window.location.href = filledUrl;
+  }
   </script>
+
 </body>
 </html>
