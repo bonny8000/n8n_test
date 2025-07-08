@@ -78,12 +78,11 @@
     const lastUsedId = localStorage.getItem("lastUsedUserId") || 1000;
     let newId = parseInt(lastUsedId) + 1;
     localStorage.setItem("lastUsedUserId", newId);
-    
-    const userId = "User_" + newId;
+
+    userId = "User_" + newId;
     document.getElementById("user-id").innerText = "Your ID: " + userId;
     document.getElementById("start-btn").style.display = "inline-block";
 
-    // Save to sessionStorage for later redirect
     sessionStorage.setItem("userId", userId);
   }
 
@@ -93,7 +92,5 @@
     window.location.href = filledUrl;
   }
 </script>
-
-
 </body>
 </html>
